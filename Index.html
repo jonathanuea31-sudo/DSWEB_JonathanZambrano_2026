@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,64 +15,181 @@
         }
 
         body{
-            background: linear-gradient(135deg, #0f172a, #2563eb);
-            height: 100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
+            background:#f4f4f4;
+            color:#333;
         }
 
-        .contenedor{
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-            padding:40px;
-            border-radius:20px;
-            text-align:center;
+        header{
+            background:#2563eb;
             color:white;
-            width:80%;
-            max-width:700px;
-            box-shadow:0 8px 20px rgba(0,0,0,0.3);
+            text-align:center;
+            padding:30px;
         }
 
-        h1{
-            font-size:3rem;
-            margin-bottom:15px;
+        nav{
+            background:#1e40af;
+            padding:15px;
+            text-align:center;
+        }
+
+        nav a{
+            color:white;
+            text-decoration:none;
+            margin:0 15px;
+            font-weight:bold;
+        }
+
+        nav a:hover{
+            text-decoration:underline;
+        }
+
+        main{
+            max-width:1200px;
+            margin:auto;
+            padding:20px;
+        }
+
+        section{
+            background:white;
+            margin-bottom:20px;
+            padding:20px;
+            border-radius:10px;
+            box-shadow:0 2px 5px rgba(0,0,0,0.1);
         }
 
         h2{
-            font-size:1.4rem;
-            font-weight:normal;
+            color:#2563eb;
+            margin-bottom:10px;
+        }
+
+        img{
+            width:100%;
+            max-width:600px;
+            display:block;
+            margin:15px auto;
+            border-radius:10px;
+        }
+
+        aside{
+            background:#dbeafe;
+            padding:20px;
+            border-radius:10px;
             margin-bottom:20px;
         }
 
-        h3{
-            font-size:1.1rem;
-            color:#dbeafe;
+        footer{
+            background:#1e3a8a;
+            color:white;
+            text-align:center;
+            padding:20px;
+            margin-top:20px;
         }
 
-        .linea{
-            width:100px;
-            height:4px;
-            background:white;
-            margin:20px auto;
-            border-radius:10px;
+        iframe{
+            width:100%;
+            max-width:700px;
+            height:400px;
+            display:block;
+            margin:auto;
         }
     </style>
 </head>
 <body>
 
-    <div class="contenedor">
-        <h1>Desarrollo Web</h1>
+<header>
+    <h1>Desarrollo Web</h1>
+    <p>Proyecto académico sobre diseño y creación de páginas web modernas</p>
+</header>
 
-        <div class="linea"></div>
+<nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#quienes">Quiénes Somos</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#contacto">Contacto</a>
+</nav>
 
-        <h2>
-            Proyecto académico para el aprendizaje de tecnologías web,
-            diseño de páginas y desarrollo de aplicaciones modernas.
-        </h2>
+<main>
 
-        <h3>Desarrollado por Jonathan Zambrano</h3>
-    </div>
+    <section id="inicio">
+        <h2>Inicio</h2>
+        <article>
+            <p>
+                Bienvenido a nuestro proyecto de Desarrollo Web. Este sitio tiene como objetivo
+                presentar información sobre la creación de páginas web modernas utilizando HTML5,
+                CSS y buenas prácticas de diseño para ofrecer experiencias atractivas a los usuarios.
+            </p>
+        </article>
+    </section>
+
+    <section id="quienes">
+        <h2>Quiénes Somos</h2>
+
+        <p>
+            Este proyecto académico fue desarrollado con el propósito de aplicar los conocimientos
+            adquiridos en la asignatura de Desarrollo Web. La página representa una propuesta de
+            sistema web orientada a la organización y presentación de información digital de manera
+            clara y estructurada. A través de este trabajo se emplean etiquetas semánticas de HTML5
+            para mejorar la accesibilidad, la organización del contenido y la experiencia del usuario.
+            Además, se incorporan elementos multimedia como imágenes y videos para enriquecer la
+            presentación del proyecto. El objetivo principal es demostrar la capacidad de diseñar
+            páginas web funcionales, atractivas y adaptables a diferentes dispositivos, siguiendo
+            estándares actuales de desarrollo web y fomentando el aprendizaje práctico de las
+            tecnologías utilizadas en la construcción de sitios web modernos.
+        </p>
+
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200"
+             alt="Desarrollo Web">
+    </section>
+
+    <section id="servicios">
+        <h2>Servicios</h2>
+
+        <ul>
+            <li>Diseño de páginas web</li>
+            <li>Desarrollo de sistemas web</li>
+            <li>Mantenimiento de sitios web</li>
+            <li>Optimización de contenido digital</li>
+            <li>Asesoría en tecnologías web</li>
+        </ul>
+    </section>
+
+    <section id="contacto">
+        <h2>Contacto</h2>
+
+        <p><strong>Correo:</strong> zabranyt@gmail.com</p>
+        <p><strong>Teléfono:</strong> +593 98 765 4321</p>
+        <p><strong>Dirección:</strong> Av. Amazonas y Naciones Unidas, Quito, Ecuador</p>
+
+        <p>
+            <a href="https://www.facebook.com/" target="_blank">Facebook</a> |
+            <a href="https://www.instagram.com/" target="_blank">Instagram</a> |
+            <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+        </p>
+    </section>
+
+    <section>
+        <h2>Video Informativo</h2>
+
+        <iframe
+            src="https://www.youtube.com/embed/qz0aGYrrlhU"
+            title="Video HTML"
+            allowfullscreen>
+        </iframe>
+    </section>
+
+    <aside>
+        <h2>Información Adicional</h2>
+        <p>Horario de atención: Lunes a Viernes de 08:00 a 17:00.</p>
+        <p>Atendemos clientes en todo el Ecuador.</p>
+        <p>Brindamos soluciones modernas de desarrollo web para emprendimientos, negocios y proyectos académicos.</p>
+    </aside>
+
+</main>
+
+<footer>
+    <p>Jonathan Zambrano - Desarrollo Web - Universidad Estatal Amazónica - 2026</p>
+</footer>
 
 </body>
 </html>
+```
