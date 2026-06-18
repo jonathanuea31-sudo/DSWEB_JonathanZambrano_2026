@@ -1,195 +1,350 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desarrollo Web</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desarrollo Web - Jonathan Zambrano</title>
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family: Arial, sans-serif;
-        }
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-        body{
-            background:#f4f4f4;
-            color:#333;
-        }
+<style>
 
-        header{
-            background:#2563eb;
-            color:white;
-            text-align:center;
-            padding:30px;
-        }
+body{
+    font-family: Arial, sans-serif;
+    background-color:#f8f9fa;
+}
 
-        nav{
-            background:#1e40af;
-            padding:15px;
-            text-align:center;
-        }
+/* Navbar con degradado */
+.navbar{
+    background: linear-gradient(
+        90deg,
+        #0f172a,
+        #1d4ed8,
+        #38bdf8
+    ) !important;
+}
 
-        nav a{
-            color:white;
-            text-decoration:none;
-            margin:0 15px;
-            font-weight:bold;
-        }
+/* Encabezado */
+.hero{
+    background: linear-gradient(
+        135deg,
+        #0f172a 0%,
+        #1d4ed8 50%,
+        #38bdf8 100%
+    );
+    color:white;
+    padding:100px 20px;
+    text-align:center;
+    border-bottom-left-radius:30px;
+    border-bottom-right-radius:30px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
 
-        nav a:hover{
-            text-decoration:underline;
-        }
+.hero h1{
+    font-size:3rem;
+    font-weight:bold;
+}
 
-        main{
-            max-width:1200px;
-            margin:auto;
-            padding:20px;
-        }
+.hero p{
+    font-size:1.2rem;
+}
 
-        section{
-            background:white;
-            margin-bottom:20px;
-            padding:20px;
-            border-radius:10px;
-            box-shadow:0 2px 5px rgba(0,0,0,0.1);
-        }
+/* Tarjetas */
+.card{
+    border:none;
+    transition:0.3s;
+}
 
-        h2{
-            color:#2563eb;
-            margin-bottom:10px;
-        }
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
 
-        img{
-            width:100%;
-            max-width:600px;
-            display:block;
-            margin:15px auto;
-            border-radius:10px;
-        }
+/* Aside */
+aside{
+    background:#e9ecef;
+    border-left:5px solid #1d4ed8;
+}
 
-        aside{
-            background:#dbeafe;
-            padding:20px;
-            border-radius:10px;
-            margin-bottom:20px;
-        }
+/* Footer */
+footer{
+    background: linear-gradient(
+        90deg,
+        #0f172a,
+        #1d4ed8,
+        #38bdf8
+    );
+    color:white;
+    padding:25px;
+}
 
-        footer{
-            background:#1e3a8a;
-            color:white;
-            text-align:center;
-            padding:20px;
-            margin-top:20px;
-        }
+/* Botones */
+.btn-custom{
+    background:#1d4ed8;
+    color:white;
+}
 
-        iframe{
-            width:100%;
-            max-width:700px;
-            height:400px;
-            display:block;
-            margin:auto;
-        }
-    </style>
+.btn-custom:hover{
+    background:#0f172a;
+    color:white;
+}
+
+/* Responsive */
+@media (max-width:768px){
+
+.hero{
+    padding:70px 15px;
+}
+
+.hero h1{
+    font-size:2rem;
+}
+
+}
+
+</style>
 </head>
+
 <body>
 
-<header>
-    <h1>Desarrollo Web</h1>
-    <p>Proyecto académico sobre diseño y creación de páginas web modernas</p>
-</header>
+<!-- MENU -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+<div class="container">
 
-<nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#quienes">Quiénes Somos</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#contacto">Contacto</a>
+<a class="navbar-brand" href="#">Desarrollo Web</a>
+
+<button class="navbar-toggler" type="button"
+data-bs-toggle="collapse"
+data-bs-target="#menu">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="menu">
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="#inicio">Inicio</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#quienes">Quiénes Somos</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#servicios">Servicios</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#contacto">Contacto</a>
+</li>
+
+</ul>
+</div>
+
+</div>
 </nav>
 
-<main>
+<!-- HEADER -->
+<header class="hero" id="inicio">
 
-    <section id="inicio">
-        <h2>Inicio</h2>
-        <article>
-            <p>
-                Bienvenido a nuestro proyecto de Desarrollo Web. Este sitio tiene como objetivo
-                presentar información sobre la creación de páginas web modernas utilizando HTML5,
-                CSS y buenas prácticas de diseño para ofrecer experiencias atractivas a los usuarios.
-            </p>
-        </article>
-    </section>
+<h1>Desarrollo Web</h1>
 
-    <section id="quienes">
-        <h2>Quiénes Somos</h2>
+<p class="lead">
+Proyecto académico para el aprendizaje y desarrollo de sitios web modernos.
+</p>
 
-        <p>
-            Este proyecto académico fue desarrollado con el propósito de aplicar los conocimientos
-            adquiridos en la asignatura de Desarrollo Web. La página representa una propuesta de
-            sistema web orientada a la organización y presentación de información digital de manera
-            clara y estructurada. A través de este trabajo se emplean etiquetas semánticas de HTML5
-            para mejorar la accesibilidad, la organización del contenido y la experiencia del usuario.
-            Además, se incorporan elementos multimedia como imágenes y videos para enriquecer la
-            presentación del proyecto. El objetivo principal es demostrar la capacidad de diseñar
-            páginas web funcionales, atractivas y adaptables a diferentes dispositivos, siguiendo
-            estándares actuales de desarrollo web y fomentando el aprendizaje práctico de las
-            tecnologías utilizadas en la construcción de sitios web modernos.
-        </p>
+<a href="#contacto" class="btn btn-light btn-lg mt-3">
+Contáctanos
+</a>
 
-        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200"
-             alt="Desarrollo Web">
-    </section>
+</header>
 
-    <section id="servicios">
-        <h2>Servicios</h2>
+<!-- CONTENIDO -->
+<main class="container my-5">
 
-        <ul>
-            <li>Diseño de páginas web</li>
-            <li>Desarrollo de sistemas web</li>
-            <li>Mantenimiento de sitios web</li>
-            <li>Optimización de contenido digital</li>
-            <li>Asesoría en tecnologías web</li>
-        </ul>
-    </section>
+<!-- QUIENES SOMOS -->
+<section id="quienes" class="mb-5">
 
-    <section id="contacto">
-        <h2>Contacto</h2>
+<div class="row align-items-center">
 
-        <p><strong>Correo:</strong> zabranyt@gmail.com</p>
-        <p><strong>Teléfono:</strong> +593 98 765 4321</p>
-        <p><strong>Dirección:</strong> Av. Amazonas y Naciones Unidas, Quito, Ecuador</p>
+<div class="col-md-6">
+<img
+src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200"
+class="img-fluid rounded shadow"
+alt="Desarrollo Web">
+</div>
 
-        <p>
-            <a href="https://www.facebook.com/" target="_blank">Facebook</a> |
-            <a href="https://www.instagram.com/" target="_blank">Instagram</a> |
-            <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
-        </p>
-    </section>
+<div class="col-md-6">
 
-    <section>
-        <h2>Video Informativo</h2>
+<h2>Quiénes Somos</h2>
 
-        <iframe
-            src="https://www.youtube.com/embed/qz0aGYrrlhU"
-            title="Video HTML"
-            allowfullscreen>
-        </iframe>
-    </section>
+<p>
+Este proyecto académico fue desarrollado con el propósito de aplicar los conocimientos adquiridos en la asignatura de Desarrollo Web. La página representa una propuesta moderna enfocada en el diseño y construcción de sitios web utilizando HTML5, CSS3 y Bootstrap. Se aplican buenas prácticas de organización mediante etiquetas semánticas, diseño adaptable y elementos multimedia que mejoran la experiencia del usuario. El objetivo es demostrar habilidades en el desarrollo de páginas web profesionales, capaces de visualizarse correctamente en computadoras, tabletas y dispositivos móviles. Además, se busca fortalecer el aprendizaje práctico mediante la implementación de herramientas actuales utilizadas en el desarrollo web moderno.
+</p>
 
-    <aside>
-        <h2>Información Adicional</h2>
-        <p>Horario de atención: Lunes a Viernes de 08:00 a 17:00.</p>
-        <p>Atendemos clientes en todo el Ecuador.</p>
-        <p>Brindamos soluciones modernas de desarrollo web para emprendimientos, negocios y proyectos académicos.</p>
-    </aside>
+</div>
+
+</div>
+
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios" class="mb-5">
+
+<h2 class="text-center mb-4">
+Servicios
+</h2>
+
+<div class="row">
+
+<div class="col-md-4 mb-3">
+<div class="card h-100 shadow">
+<div class="card-body text-center">
+<h5>Diseño Web</h5>
+<p>Creación de sitios web modernos y atractivos.</p>
+</div>
+</div>
+</div>
+
+<div class="col-md-4 mb-3">
+<div class="card h-100 shadow">
+<div class="card-body text-center">
+<h5>Desarrollo de Sistemas</h5>
+<p>Aplicaciones web adaptadas a diferentes necesidades.</p>
+</div>
+</div>
+</div>
+
+<div class="col-md-4 mb-3">
+<div class="card h-100 shadow">
+<div class="card-body text-center">
+<h5>Soporte Técnico</h5>
+<p>Mantenimiento y optimización de plataformas digitales.</p>
+</div>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- VIDEO -->
+<section class="mb-5">
+
+<h2 class="text-center mb-4">
+Video Informativo
+</h2>
+
+<div class="ratio ratio-16x9">
+<iframe
+src="https://www.youtube.com/embed/qz0aGYrrlhU"
+allowfullscreen>
+</iframe>
+</div>
+
+</section>
+
+<!-- ASIDE -->
+<aside class="p-4 rounded mb-5">
+
+<h3>Información Adicional</h3>
+
+<p>Horario de atención: Lunes a Viernes de 08:00 a 17:00.</p>
+
+<p>Atendemos proyectos y emprendimientos en todo el Ecuador.</p>
+
+<p>Ofrecemos asesoría académica y desarrollo de sitios web modernos.</p>
+
+</aside>
+
+<!-- CONTACTO -->
+<section id="contacto">
+
+<h2 class="text-center mb-4">
+Contacto
+</h2>
+
+<div class="row">
+
+<!-- Formulario -->
+<div class="col-md-6">
+
+<form>
+
+<div class="mb-3">
+<label class="form-label">Nombre</label>
+<input type="text" class="form-control">
+</div>
+
+<div class="mb-3">
+<label class="form-label">Correo Electrónico</label>
+<input type="email" class="form-control">
+</div>
+
+<div class="mb-3">
+<label class="form-label">Asunto</label>
+<input type="text" class="form-control">
+</div>
+
+<div class="mb-3">
+<label class="form-label">Mensaje</label>
+<textarea class="form-control" rows="4"></textarea>
+</div>
+
+<button type="submit" class="btn btn-primary">
+Enviar Mensaje
+</button>
+
+</form>
+
+</div>
+
+<!-- Datos -->
+<div class="col-md-6">
+
+<h4>Información de Contacto</h4>
+
+<p><strong>Correo:</strong> zabranyt@gmail.com</p>
+
+<p><strong>Teléfono:</strong> +593 98 765 4321</p>
+
+<p><strong>Dirección:</strong> Av. Amazonas y Naciones Unidas, Quito, Ecuador</p>
+
+<a href="mailto:zabranyt@gmail.com"
+class="btn btn-success m-1">
+Correo
+</a>
+
+<a href="https://facebook.com"
+class="btn btn-primary m-1">
+Facebook
+</a>
+
+<a href="https://instagram.com"
+class="btn btn-danger m-1">
+Instagram
+</a>
+
+</div>
+
+</div>
+
+</section>
 
 </main>
 
-<footer>
-    <p>Jonathan Zambrano - Desarrollo Web - Universidad Estatal Amazónica - 2026</p>
+<!-- FOOTER -->
+<footer class="text-center">
+
+<p>
+Jonathan Zambrano - Desarrollo Web -
+Universidad Estatal Amazónica - 2026
+</p>
+
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
-```
