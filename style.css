@@ -1,0 +1,239 @@
+/* ===========================
+   ESTILOS GENERALES
+=========================== */
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background:#f5f7fa;
+    color:#333;
+}
+
+/* ===========================
+   ENCABEZADO
+=========================== */
+
+.hero{
+    background:linear-gradient(135deg,#0d6efd,#6610f2,#20c997);
+    color:white;
+    padding:90px 20px;
+}
+
+.hero h1{
+    font-weight:bold;
+}
+
+.hero p{
+    font-size:20px;
+}
+
+/* ===========================
+   MENÚ
+=========================== */
+
+.navbar{
+    box-shadow:0 4px 10px rgba(0,0,0,.2);
+}
+
+.nav-link{
+    transition:.3s;
+}
+
+.nav-link:hover{
+    color:#ffc107 !important;
+}
+
+/* ===========================
+   SECCIONES
+=========================== */
+
+section{
+    padding-top:50px;
+    padding-bottom:50px;
+}
+
+h2{
+    color:#0d6efd;
+    margin-bottom:20px;
+    font-weight:bold;
+}
+
+/* ===========================
+   IMÁGENES
+=========================== */
+
+img{
+    border-radius:15px;
+}
+
+.img-fluid{
+    transition:.4s;
+}
+
+.img-fluid:hover{
+    transform:scale(1.03);
+}
+
+/* ===========================
+   TARJETAS
+=========================== */
+
+.card{
+    border:none;
+    border-radius:15px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+.card-header{
+    font-size:20px;
+    font-weight:bold;
+}
+
+/* ===========================
+   FORMULARIO
+=========================== */
+
+form{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.form-control,
+.form-select{
+    border-radius:10px;
+}
+
+.form-control:focus,
+.form-select:focus{
+    box-shadow:0 0 10px rgba(13,110,253,.4);
+}
+
+small{
+    font-size:14px;
+}
+
+/* ===========================
+   BOTONES
+=========================== */
+
+.btn{
+    border-radius:30px;
+}
+
+.btn-success{
+    padding:10px 35px;
+    font-weight:bold;
+}
+
+.btn-danger{
+    border-radius:20px;
+}
+
+/* ===========================
+   TABLA
+=========================== */
+
+table{
+    background:white;
+}
+
+thead{
+    text-align:center;
+}
+
+tbody td{
+    vertical-align:middle;
+}
+
+/* ===========================
+   VIDEO
+=========================== */
+
+.ratio{
+    border-radius:15px;
+    overflow:hidden;
+}
+
+/* ===========================
+   ASIDE
+=========================== */
+
+aside .alert{
+    border-radius:15px;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+footer{
+    margin-top:40px;
+}
+
+footer h5{
+    font-weight:bold;
+}
+
+/* ===========================
+   VALIDACIONES
+=========================== */
+
+.is-valid{
+    border:2px solid #198754 !important;
+}
+
+.is-invalid{
+    border:2px solid #dc3545 !important;
+}
+
+.text-danger{
+    font-size:14px;
+}
+
+.alert{
+    margin-top:20px;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:768px){
+
+.hero{
+
+padding:60px 15px;
+
+}
+
+.hero h1{
+
+font-size:30px;
+
+}
+
+.hero p{
+
+font-size:17px;
+
+}
+
+.card{
+
+margin-bottom:20px;
+
+}
+
+table{
+
+font-size:14px;
+
+}
+
+}

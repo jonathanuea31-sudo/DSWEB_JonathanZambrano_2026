@@ -1,350 +1,472 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Desarrollo Web - Jonathan Zambrano</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Web de Gestión Empresarial</title>
 
-<!-- Bootstrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<style>
-
-body{
-    font-family: Arial, sans-serif;
-    background-color:#f8f9fa;
-}
-
-/* Navbar con degradado */
-.navbar{
-    background: linear-gradient(
-        90deg,
-        #0f172a,
-        #1d4ed8,
-        #38bdf8
-    ) !important;
-}
-
-/* Encabezado */
-.hero{
-    background: linear-gradient(
-        135deg,
-        #0f172a 0%,
-        #1d4ed8 50%,
-        #38bdf8 100%
-    );
-    color:white;
-    padding:100px 20px;
-    text-align:center;
-    border-bottom-left-radius:30px;
-    border-bottom-right-radius:30px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
-}
-
-.hero h1{
-    font-size:3rem;
-    font-weight:bold;
-}
-
-.hero p{
-    font-size:1.2rem;
-}
-
-/* Tarjetas */
-.card{
-    border:none;
-    transition:0.3s;
-}
-
-.card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 10px 20px rgba(0,0,0,0.2);
-}
-
-/* Aside */
-aside{
-    background:#e9ecef;
-    border-left:5px solid #1d4ed8;
-}
-
-/* Footer */
-footer{
-    background: linear-gradient(
-        90deg,
-        #0f172a,
-        #1d4ed8,
-        #38bdf8
-    );
-    color:white;
-    padding:25px;
-}
-
-/* Botones */
-.btn-custom{
-    background:#1d4ed8;
-    color:white;
-}
-
-.btn-custom:hover{
-    background:#0f172a;
-    color:white;
-}
-
-/* Responsive */
-@media (max-width:768px){
-
-.hero{
-    padding:70px 15px;
-}
-
-.hero h1{
-    font-size:2rem;
-}
-
-}
-
-</style>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- MENU -->
-<nav class="navbar navbar-expand-lg navbar-dark">
-<div class="container">
+    <!-- ENCABEZADO -->
+    <header class="hero text-white text-center py-5">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Sistema Web de Gestión Empresarial</h1>
+            <p class="lead">Administración eficiente de clientes, productos y servicios</p>
+            <a href="#contacto" class="btn btn-warning btn-lg mt-3">Contáctanos</a>
+        </div>
+    </header>
 
-<a class="navbar-brand" href="#">Desarrollo Web</a>
+    <!-- MENÚ -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
 
-<button class="navbar-toggler" type="button"
-data-bs-toggle="collapse"
-data-bs-target="#menu">
-<span class="navbar-toggler-icon"></span>
-</button>
+            <a class="navbar-brand" href="#">DSWEB</a>
 
-<div class="collapse navbar-collapse" id="menu">
-<ul class="navbar-nav ms-auto">
+            <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu">
 
-<li class="nav-item">
-<a class="nav-link" href="#inicio">Inicio</a>
-</li>
+                <span class="navbar-toggler-icon"></span>
 
-<li class="nav-item">
-<a class="nav-link" href="#quienes">Quiénes Somos</a>
-</li>
+            </button>
 
-<li class="nav-item">
-<a class="nav-link" href="#servicios">Servicios</a>
-</li>
+            <div class="collapse navbar-collapse" id="menu">
 
-<li class="nav-item">
-<a class="nav-link" href="#contacto">Contacto</a>
-</li>
+                <ul class="navbar-nav ms-auto">
 
-</ul>
-</div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Inicio</a>
+                    </li>
 
-</div>
-</nav>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#quienes">Quiénes Somos</a>
+                    </li>
 
-<!-- HEADER -->
-<header class="hero" id="inicio">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicios">Servicios</a>
+                    </li>
 
-<h1>Desarrollo Web</h1>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
 
-<p class="lead">
-Proyecto académico para el aprendizaje y desarrollo de sitios web modernos.
-</p>
+                </ul>
 
-<a href="#contacto" class="btn btn-light btn-lg mt-3">
-Contáctanos
-</a>
+            </div>
 
-</header>
+        </div>
+    </nav>
 
-<!-- CONTENIDO -->
-<main class="container my-5">
+    <main>
 
-<!-- QUIENES SOMOS -->
-<section id="quienes" class="mb-5">
+        <!-- INICIO -->
+        <section id="inicio" class="container py-5">
 
-<div class="row align-items-center">
+            <div class="row align-items-center">
 
-<div class="col-md-6">
-<img
-src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200"
-class="img-fluid rounded shadow"
-alt="Desarrollo Web">
-</div>
+                <div class="col-lg-6">
 
-<div class="col-md-6">
+                    <h2>Bienvenido</h2>
 
-<h2>Quiénes Somos</h2>
+                    <p>
 
-<p>
-Este proyecto académico fue desarrollado con el propósito de aplicar los conocimientos adquiridos en la asignatura de Desarrollo Web. La página representa una propuesta moderna enfocada en el diseño y construcción de sitios web utilizando HTML5, CSS3 y Bootstrap. Se aplican buenas prácticas de organización mediante etiquetas semánticas, diseño adaptable y elementos multimedia que mejoran la experiencia del usuario. El objetivo es demostrar habilidades en el desarrollo de páginas web profesionales, capaces de visualizarse correctamente en computadoras, tabletas y dispositivos móviles. Además, se busca fortalecer el aprendizaje práctico mediante la implementación de herramientas actuales utilizadas en el desarrollo web moderno.
-</p>
+                        Nuestro sistema permite administrar información de clientes,
+                        productos y servicios de una manera moderna, sencilla y segura.
 
-</div>
+                    </p>
 
-</div>
+                    <button class="btn btn-primary">
+                        Conocer más
+                    </button>
 
-</section>
+                </div>
 
-<!-- SERVICIOS -->
-<section id="servicios" class="mb-5">
+                <div class="col-lg-6">
 
-<h2 class="text-center mb-4">
-Servicios
-</h2>
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=900"
+                        class="img-fluid rounded shadow">
 
-<div class="row">
+                </div>
 
-<div class="col-md-4 mb-3">
-<div class="card h-100 shadow">
-<div class="card-body text-center">
-<h5>Diseño Web</h5>
-<p>Creación de sitios web modernos y atractivos.</p>
-</div>
-</div>
-</div>
+            </div>
 
-<div class="col-md-4 mb-3">
-<div class="card h-100 shadow">
-<div class="card-body text-center">
-<h5>Desarrollo de Sistemas</h5>
-<p>Aplicaciones web adaptadas a diferentes necesidades.</p>
-</div>
-</div>
-</div>
+        </section>
 
-<div class="col-md-4 mb-3">
-<div class="card h-100 shadow">
-<div class="card-body text-center">
-<h5>Soporte Técnico</h5>
-<p>Mantenimiento y optimización de plataformas digitales.</p>
-</div>
-</div>
-</div>
+        <!-- QUIÉNES SOMOS -->
+        <section id="quienes" class="container py-5">
 
-</div>
+            <div class="row">
 
-</section>
+                <div class="col-lg-8">
 
-<!-- VIDEO -->
-<section class="mb-5">
+                    <h2>Quiénes Somos</h2>
 
-<h2 class="text-center mb-4">
-Video Informativo
-</h2>
+                    <p>
 
-<div class="ratio ratio-16x9">
-<iframe
-src="https://www.youtube.com/embed/qz0aGYrrlhU"
-allowfullscreen>
-</iframe>
-</div>
+                        Somos un proyecto orientado al desarrollo de aplicaciones web
+                        modernas que permiten mejorar la gestión empresarial mediante
+                        herramientas tecnológicas accesibles. Nuestro objetivo es brindar
+                        soluciones eficientes para el registro, administración y consulta
+                        de información utilizando HTML5, CSS3, Bootstrap y JavaScript.
+                        Este sistema busca facilitar el trabajo diario de pequeñas y
+                        medianas empresas ofreciendo una interfaz amigable, adaptable a
+                        dispositivos móviles y con funcionalidades dinámicas para mejorar
+                        la experiencia del usuario.
 
-</section>
+                    </p>
 
-<!-- ASIDE -->
-<aside class="p-4 rounded mb-5">
+                </div>
 
-<h3>Información Adicional</h3>
+                <div class="col-lg-4">
 
-<p>Horario de atención: Lunes a Viernes de 08:00 a 17:00.</p>
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=900"
+                        class="img-fluid rounded shadow">
 
-<p>Atendemos proyectos y emprendimientos en todo el Ecuador.</p>
+                </div>
 
-<p>Ofrecemos asesoría académica y desarrollo de sitios web modernos.</p>
+            </div>
 
-</aside>
+        </section>
 
-<!-- CONTACTO -->
-<section id="contacto">
+        <!-- SERVICIOS -->
+        <section id="servicios" class="container py-5">
 
-<h2 class="text-center mb-4">
-Contacto
-</h2>
+            <h2 class="text-center mb-4">
+                Nuestros Servicios
+            </h2>
 
-<div class="row">
+            <div class="row">
 
-<!-- Formulario -->
-<div class="col-md-6">
+                <div class="col-md-4 mb-4">
 
-<form>
+                    <div class="card h-100 shadow">
 
-<div class="mb-3">
-<label class="form-label">Nombre</label>
-<input type="text" class="form-control">
-</div>
+                        <div class="card-body text-center">
 
-<div class="mb-3">
-<label class="form-label">Correo Electrónico</label>
-<input type="email" class="form-control">
-</div>
+                            <h4>Clientes</h4>
 
-<div class="mb-3">
-<label class="form-label">Asunto</label>
-<input type="text" class="form-control">
-</div>
+                            <p>
 
-<div class="mb-3">
-<label class="form-label">Mensaje</label>
-<textarea class="form-control" rows="4"></textarea>
-</div>
+                                Registro y administración de clientes.
 
-<button type="submit" class="btn btn-primary">
-Enviar Mensaje
-</button>
+                            </p>
 
-</form>
+                        </div>
 
-</div>
+                    </div>
 
-<!-- Datos -->
-<div class="col-md-6">
+                </div>
 
-<h4>Información de Contacto</h4>
+                <div class="col-md-4 mb-4">
 
-<p><strong>Correo:</strong> zabranyt@gmail.com</p>
+                    <div class="card h-100 shadow">
 
-<p><strong>Teléfono:</strong> +593 98 765 4321</p>
+                        <div class="card-body text-center">
 
-<p><strong>Dirección:</strong> Av. Amazonas y Naciones Unidas, Quito, Ecuador</p>
+                            <h4>Productos</h4>
 
-<a href="mailto:zabranyt@gmail.com"
-class="btn btn-success m-1">
-Correo
-</a>
+                            <p>
 
-<a href="https://facebook.com"
-class="btn btn-primary m-1">
-Facebook
-</a>
+                                Gestión de inventario y productos.
 
-<a href="https://instagram.com"
-class="btn btn-danger m-1">
-Instagram
-</a>
+                            </p>
 
-</div>
+                        </div>
 
-</div>
+                    </div>
 
-</section>
+                </div>
 
-</main>
+                <div class="col-md-4 mb-4">
 
-<!-- FOOTER -->
-<footer class="text-center">
+                    <div class="card h-100 shadow">
 
-<p>
-Jonathan Zambrano - Desarrollo Web -
-Universidad Estatal Amazónica - 2026
-</p>
+                        <div class="card-body text-center">
 
-</footer>
+                            <h4>Reportes</h4>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+                            <p>
+
+                                Estadísticas y control administrativo.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- FORMULARIO -->
+        <section id="contacto" class="container py-5">
+
+            <h2 class="text-center mb-4">
+                Registro de Información
+            </h2>
+
+            <div id="mensajeGeneral"></div>
+
+            <form id="formulario">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Nombre
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nombre"
+                            class="form-control">
+
+                        <small
+                            id="errorNombre"
+                            class="text-danger">
+                        </small>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+
+                            Categoría
+
+                        </label>
+
+                        <select
+                            id="categoria"
+                            class="form-select">
+
+                            <option value="">
+                                Seleccione...
+                            </option>
+
+                            <option>
+                                Cliente
+                            </option>
+
+                            <option>
+                                Producto
+                            </option>
+
+                            <option>
+                                Servicio
+                            </option>
+
+                        </select>
+
+                        <small
+                            id="errorCategoria"
+                            class="text-danger">
+                        </small>
+
+                    </div>
+            <div class="col-12 mb-3">
+
+                        <label class="form-label">
+                            Descripción
+                        </label>
+
+                        <textarea
+                            id="descripcion"
+                            rows="4"
+                            class="form-control"
+                            placeholder="Ingrese una descripción"></textarea>
+
+                        <small
+                            id="errorDescripcion"
+                            class="text-danger">
+                        </small>
+
+                    </div>
+
+                    <div class="col-12 text-center">
+
+                        <button
+                            type="submit"
+                            class="btn btn-success btn-lg">
+
+                            Registrar Información
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </section>
+
+        <!-- REGISTROS -->
+        <section class="container py-5">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-primary text-white">
+
+                    <h3 class="mb-0">
+                        Registros
+                    </h3>
+
+                </div>
+
+                <div class="card-body">
+
+                    <h5>
+
+                        Total de registros:
+                        <span id="contador">0</span>
+
+                    </h5>
+
+                    <div class="table-responsive">
+
+                        <table class="table table-bordered table-hover mt-3">
+
+                            <thead class="table-dark">
+
+                                <tr>
+
+                                    <th>Nombre</th>
+
+                                    <th>Categoría</th>
+
+                                    <th>Descripción</th>
+
+                                    <th>Acciones</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="listaRegistros">
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- VIDEO -->
+        <section class="container py-5">
+
+            <h2 class="text-center mb-4">
+                Video Informativo
+            </h2>
+
+            <div class="ratio ratio-16x9 shadow">
+
+                <iframe
+                    src="https://www.youtube.com/embed/UB1O30fR-EE"
+                    allowfullscreen>
+
+                </iframe>
+
+            </div>
+
+        </section>
+
+        <!-- ASIDE -->
+        <aside class="container py-4">
+
+            <div class="alert alert-info">
+
+                <h4>
+
+                    Información Importante
+
+                </h4>
+
+                <ul>
+
+                    <li>Horario de atención: Lunes a Viernes.</li>
+
+                    <li>Atención personalizada.</li>
+
+                    <li>Soporte técnico permanente.</li>
+
+                    <li>Servicios disponibles en todo Ecuador.</li>
+
+                </ul>
+
+            </div>
+
+        </aside>
+
+    </main>
+
+    <!-- PIE -->
+    <footer class="bg-dark text-white text-center p-4">
+
+        <h5>
+
+            Jonathan Zambrano
+
+        </h5>
+
+        <p>
+
+            Desarrollo Web - Universidad Estatal Amazónica
+
+        </p>
+
+        <p>
+
+            © 2026 Todos los derechos reservados.
+
+        </p>
+
+        <p>
+
+            Correo:
+            zabranyt@gmail.com
+
+        </p>
+
+        <p>
+
+            Teléfono:
+            +593 98 765 4321
+
+        </p>
+
+        <p>
+
+            Dirección:
+            Av. Francisco de Orellana, Guayaquil, Ecuador
+
+        </p>
+
+    </footer>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
 
 </body>
+
 </html>
