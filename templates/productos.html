@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Productos · Sistema Web de Gestión Empresarial{% endblock %}
+{% block header_title %}Módulo de Productos{% endblock %}
+{% block header_lead %}Consulta el inventario disponible con su precio y estado de stock.{% endblock %}
+
+{% block content %}
+<section class="container py-5">
+  <div class="text-center mb-4">
+    <span class="eyebrow justify-content-center">Inventario</span>
+    <h2>{{ titulo_modulo }}</h2>
+    <p>Total de productos registrados: <strong>{{ productos|length }}</strong></p>
+  </div>
+
+  <div class="row">
+    {% for producto in productos %}
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h4 class="mb-0">{{ producto.nombre|upper }}</h4>
+            {% if producto.stock > 0 %}
+              <span class="badge bg-success">Disponible</span>
+            {% else %}
+              <span class="badge bg-danger">Agotado</span>
+            {% endif %}
+          </div>
+          <p class="mb-1"><strong>Categoría:</strong> {{ producto.categoria }}</p>
+          <p class="mb-1"><strong>Precio:</strong> ${{ "%.2f"|format(producto.precio) }}</p>
+          <p class="mb-0"><strong>Stock:</strong> {{ producto.stock }} unidades</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

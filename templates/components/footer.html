@@ -1,0 +1,39 @@
+<footer class="site-footer text-white pt-5 pb-4">
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-md-4">
+        <a class="navbar-brand d-flex align-items-center gap-2 mb-3" href="{{ url_for('index') }}">
+          <span class="brand-badge">DS</span>
+          <span>DSWEB</span>
+        </a>
+        <p class="footer-muted">
+          Sistema web para la administración de clientes, productos
+          y servicios, desarrollado como Proyecto Integrador.
+        </p>
+      </div>
+      <div class="col-md-4">
+        <h6 class="footer-heading">Enlaces</h6>
+        <ul class="list-unstyled footer-links">
+          <li><a href="{{ url_for('index') }}">Inicio</a></li>
+          <li><a href="{{ url_for('productos') }}">Productos</a></li>
+          <li><a href="{{ url_for('clientes') }}">Clientes</a></li>
+          <li><a href="{{ url_for('proveedores') }}">Proveedores</a></li>
+          <li><a href="{{ url_for('facturacion') }}">Facturación</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h6 class="footer-heading">Contacto</h6>
+        <ul class="list-unstyled footer-links">
+          <li><i class="bi bi-envelope me-2"></i>zabranyt@gmail.com</li>
+          <li><i class="bi bi-telephone me-2"></i>+593 98 765 4321</li>
+          <li><i class="bi bi-geo-alt me-2"></i>Av. Francisco de Orellana, Guayaquil, Ecuador</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2">
+      <p class="footer-muted mb-0">© 2026 Jonathan Zambrano. Todos los derechos reservados.</p>
+      <p class="footer-muted mb-0">Desarrollo Web · Universidad Estatal Amazónica</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio · Sistema Web de Gestión Empresarial{% endblock %}
+
+{% block content %}
+<!-- INICIO -->
+<section id="inicio" class="container py-5">
+  <div class="row align-items-center">
+    <div class="col-lg-6">
+      <span class="eyebrow">Bienvenido</span>
+      <h2>Una gestión más simple</h2>
+      <p>
+        Nuestro sistema permite administrar información de clientes,
+        productos y servicios de una manera moderna, sencilla y segura.
+      </p>
+      <button class="btn btn-primary">Conocer más</button>
+    </div>
+    <div class="col-lg-6">
+      <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=900"
+        class="img-fluid rounded shadow">
+    </div>
+  </div>
+</section>
+
+<!-- QUIÉNES SOMOS -->
+<section id="quienes" class="container py-5">
+  <div class="row">
+    <div class="col-lg-8">
+      <span class="eyebrow">Nuestra identidad</span>
+      <h2>Quiénes Somos</h2>
+      <p>
+        Somos un proyecto orientado al desarrollo de aplicaciones web
+        modernas que permiten mejorar la gestión empresarial mediante
+        herramientas tecnológicas accesibles. Nuestro objetivo es brindar
+        soluciones eficientes para el registro, administración y consulta
+        de información utilizando HTML5, CSS3, Bootstrap, JavaScript y Flask.
+      </p>
+    </div>
+    <div class="col-lg-4">
+      <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=900"
+        class="img-fluid rounded shadow">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios" class="container py-5">
+  <div class="text-center">
+    <span class="eyebrow justify-content-center">Lo que ofrecemos</span>
+    <h2>Nuestros Servicios</h2>
+  </div>
+  <!-- Este contenedor se llena dinámicamente desde script.js -->
+  <div id="contenedorServicios" class="row"></div>
+
+  <div class="text-center mt-3">
+    <a href="{{ url_for('productos') }}" class="btn btn-outline-primary me-2">Ver Productos</a>
+    <a href="{{ url_for('clientes') }}" class="btn btn-outline-primary me-2">Ver Clientes</a>
+    <a href="{{ url_for('proveedores') }}" class="btn btn-outline-primary me-2">Ver Proveedores</a>
+    <a href="{{ url_for('facturacion') }}" class="btn btn-outline-primary">Ver Facturación</a>
+  </div>
+</section>
+
+<!-- FORMULARIO -->
+<section id="contacto" class="container py-5">
+  <div class="text-center">
+    <span class="eyebrow justify-content-center">Ingreso de datos</span>
+    <h2>Registro de Información</h2>
+  </div>
+
+  <div id="mensajeGeneral"></div>
+
+  <form id="formulario">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Nombre</label>
+        <input type="text" id="nombre" class="form-control">
+        <small id="errorNombre" class="text-danger"></small>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Categoría</label>
+        <select id="categoria" class="form-select">
+          <option value="">Seleccione...</option>
+          <option>Cliente</option>
+          <option>Producto</option>
+          <option>Servicio</option>
+        </select>
+        <small id="errorCategoria" class="text-danger"></small>
+      </div>
+      <div class="col-12 mb-3">
+        <label class="form-label">Descripción</label>
+        <textarea id="descripcion" rows="4" class="form-control" placeholder="Ingrese una descripción"></textarea>
+        <small id="errorDescripcion" class="text-danger"></small>
+      </div>
+      <div class="col-12 text-center">
+        <button type="submit" class="btn btn-success btn-lg">Registrar Información</button>
+      </div>
+    </div>
+  </form>
+
+  <div id="spinnerCarga" class="text-center my-4 d-none">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+    <p class="mt-2">Procesando registro...</p>
+  </div>
+</section>
+
+<!-- REGISTROS -->
+<section class="container py-5">
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white">
+      <h3 class="mb-0">Registros</h3>
+    </div>
+    <div class="card-body">
+      <h5>Total de registros: <span id="contador">0</span></h5>
+      <div id="estadoRegistros"></div>
+      <div id="listaRegistros" class="row mt-3"></div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="container py-5">
+  <h2 class="text-center mb-4">Video Informativo</h2>
+  <div class="ratio ratio-16x9 shadow">
+    <iframe src="https://www.youtube.com/embed/UB1O30fR-EE" allowfullscreen></iframe>
+  </div>
+</section>
+
+<!-- ASIDE -->
+<aside class="container py-4">
+  <div class="alert alert-info">
+    <h4>Información Importante</h4>
+    <ul>
+      <li>Horario de atención: Lunes a Viernes.</li>
+      <li>Atención personalizada.</li>
+      <li>Soporte técnico permanente.</li>
+      <li>Servicios disponibles en todo Ecuador.</li>
+    </ul>
+  </div>
+</aside>
+
+<!-- MODAL: muestra el detalle completo de un registro -->
+<div class="modal fade" id="modalDetalle" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Detalle del Registro</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body" id="modalDetalleBody"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}
