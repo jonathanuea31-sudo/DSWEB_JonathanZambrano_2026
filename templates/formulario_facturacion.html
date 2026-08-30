@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Nueva Factura · Sistema Web de Gestión Empresarial{% endblock %}
+{% block header_title %}Registro de Facturación{% endblock %}
+{% block header_lead %}Complete el formulario para registrar una nueva factura.{% endblock %}
+
+{% block content %}
+<section class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+          <h4 class="mb-0">Nueva Factura</h4>
+        </div>
+        <div class="card-body">
+
+          <form method="POST" novalidate>
+            {{ form.hidden_tag() }}
+
+            <div class="mb-3">
+              {{ form.numero.label(class="form-label") }}
+              {{ form.numero(class="form-control" + (" is-invalid" if form.numero.errors else "")) }}
+              {% for error in form.numero.errors %}
+                <div class="invalid-feedback">{{ error }}</div>
+              {% endfor %}
+            </div>
+
+            <div class="mb-3">
+              {{ form.cliente.label(class="form-label") }}
+              {{ form.cliente(class="form-control" + (" is-invalid" if form.cliente.errors else "")) }}
+              {% for error in form.cliente.errors %}
+                <div class="invalid-feedback">{{ error }}</div>
+              {% endfor %}
+            </div>
+
+            <div class="mb-3">
+              {{ form.total.label(class="form-label") }}
+              {{ form.total(class="form-control" + (" is-invalid" if form.total.errors else ""), step="0.01") }}
+              {% for error in form.total.errors %}
+                <div class="invalid-feedback">{{ error }}</div>
+              {% endfor %}
+            </div>
+
+            <div class="mb-3">
+              {{ form.estado.label(class="form-label") }}
+              {{ form.estado(class="form-select" + (" is-invalid" if form.estado.errors else "")) }}
+              {% for error in form.estado.errors %}
+                <div class="invalid-feedback">{{ error }}</div>
+              {% endfor %}
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <a href="{{ url_for('facturacion') }}" class="btn btn-outline-secondary">Cancelar</a>
+              {{ form.submit(class="btn btn-success") }}
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
