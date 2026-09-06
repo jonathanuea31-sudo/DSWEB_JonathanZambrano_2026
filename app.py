@@ -4,6 +4,7 @@ from forms.producto_form import ProductoForm
 from forms.cliente_form import ClienteForm
 from forms.proveedor_form import ProveedorForm
 from forms.facturacion_form import FacturacionForm
+from database import get_db_connection, init_db
 
 app = Flask(__name__)
 
@@ -11,20 +12,14 @@ app = Flask(__name__)
 # En un proyecto real esta clave debería venir de una variable de entorno.
 app.config['SECRET_KEY'] = 'clave-secreta-proyecto-integrador-dsweb-2026'
 
-# ---------------------------------------------------------------------------
-# Datos de ejemplo en memoria (no se requiere base de datos en esta etapa).
-# Se definen a nivel de módulo para que los formularios puedan agregar
-# nuevos registros mientras la aplicación siga en ejecución.
-# ---------------------------------------------------------------------------
+# Crea la carpeta data/ y la tabla 'productos' en SQLite si aún no existen.
+init_db()
 
-lista_productos = [
-    {"nombre": "Laptop Empresarial", "categoria": "Tecnología", "precio": 750.00, "stock": 8},
-    {"nombre": "Impresora Multifuncional", "categoria": "Tecnología", "precio": 180.50, "stock": 3},
-    {"nombre": "Silla Ergonómica", "categoria": "Mobiliario", "precio": 95.00, "stock": 0},
-    {"nombre": "Escritorio Ejecutivo", "categoria": "Mobiliario", "precio": 210.00, "stock": 5},
-    {"nombre": "Proyector HD", "categoria": "Tecnología", "precio": 320.00, "stock": 0},
-    {"nombre": "Archivador Metálico", "categoria": "Mobiliario", "precio": 60.00, "stock": 12},
-]
+# ---------------------------------------------------------------------------
+# Datos de ejemplo en memoria para los módulos que todavía no migran a SQLite
+# (clientes, proveedores, facturación). El módulo de productos, en cambio,
+# ya se almacena de forma persistente en data/ferreteria.db (ver database.py).
+# ---------------------------------------------------------------------------
 
 lista_clientes = [
     {"nombre": "María Fernández", "email": "MARIA.FERNANDEZ@gmail.com", "telefono": "0991234567", "activo": True},
@@ -60,9 +55,15 @@ def index():
 
 @app.route('/productos')
 def productos():
+    conn = get_db_connection()
+    filas_productos = conn.execute(
+        'SELECT id, nombre, categoria, precio, stock FROM productos ORDER BY id DESC'
+    ).fetchall()
+    conn.close()
+
     return render_template(
         'productos.html',
-        productos=lista_productos,
+        productos=filas_productos,
         titulo_modulo="Productos Registrados",
         active='productos'
     )
@@ -98,13 +99,15 @@ def nuevo_producto():
     form = ProductoForm()
 
     if form.validate_on_submit():
-        lista_productos.append({
-            "nombre": form.nombre.data,
-            "categoria": form.categoria.data,
-            "precio": form.precio.data,
-            "stock": form.stock.data,
-        })
-        flash('Producto registrado correctamente.', 'success')
+        conn = get_db_connection()
+        conn.execute(
+            'INSERT INTO productos (nombre, categoria, precio, stock) VALUES (?, ?, ?, ?)',
+            (form.nombre.data, form.categoria.data, form.precio.data, form.stock.data)
+        )
+        conn.commit()
+        conn.close()
+
+        flash('Producto registrado correctamente en la base de datos.', 'success')
         return redirect(url_for('productos'))
 
     return render_template('formulario_producto.html', form=form, active='productos')

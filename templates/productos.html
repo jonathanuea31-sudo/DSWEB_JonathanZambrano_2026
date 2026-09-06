@@ -2,7 +2,7 @@
 
 {% block title %}Productos · Sistema Web de Gestión Empresarial{% endblock %}
 {% block header_title %}Módulo de Productos{% endblock %}
-{% block header_lead %}Consulta el inventario disponible con su precio y estado de stock.{% endblock %}
+{% block header_lead %}Consulta el inventario disponible con su precio y estado de stock. Los datos se almacenan de forma persistente en SQLite.{% endblock %}
 
 {% block content %}
 <section class="container py-5">
@@ -15,26 +15,41 @@
     </a>
   </div>
 
-  <div class="row">
-    {% for producto in productos %}
-    <div class="col-md-4 mb-4">
-      <div class="card h-100 shadow">
-        <div class="card-body">
-          <div class="d-flex justify-content-between align-items-start mb-2">
-            <h4 class="mb-0">{{ producto.nombre|upper }}</h4>
+  <div class="table-responsive">
+    <table class="table table-striped shadow">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Categoría</th>
+          <th>Precio</th>
+          <th>Stock</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for producto in productos %}
+        <tr>
+          <td>{{ producto.id }}</td>
+          <td>{{ producto.nombre|upper }}</td>
+          <td>{{ producto.categoria }}</td>
+          <td>${{ "%.2f"|format(producto.precio) }}</td>
+          <td>{{ producto.stock }}</td>
+          <td>
             {% if producto.stock > 0 %}
               <span class="badge bg-success">Disponible</span>
             {% else %}
               <span class="badge bg-danger">Agotado</span>
             {% endif %}
-          </div>
-          <p class="mb-1"><strong>Categoría:</strong> {{ producto.categoria }}</p>
-          <p class="mb-1"><strong>Precio:</strong> ${{ "%.2f"|format(producto.precio) }}</p>
-          <p class="mb-0"><strong>Stock:</strong> {{ producto.stock }} unidades</p>
-        </div>
-      </div>
-    </div>
-    {% endfor %}
+          </td>
+        </tr>
+        {% else %}
+        <tr>
+          <td colspan="6" class="text-center text-muted">Todavía no hay productos registrados.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   </div>
 </section>
 {% endblock %}
