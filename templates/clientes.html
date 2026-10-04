@@ -23,6 +23,7 @@
           <th>Correo</th>
           <th>Teléfono</th>
           <th>Estado</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -38,6 +39,8 @@
               <span class="badge bg-secondary">Inactivo</span>
             {% endif %}
           </td>
+          <td><a class="btn btn-sm btn-warning" href="{{ url_for('editar_cliente', id=cliente.id) }}">Editar</a>
+          <form class="d-inline" method="post" action="{{ url_for('eliminar_cliente', id=cliente.id) }}"><button class="btn btn-sm btn-danger">Eliminar</button></form></td>
         </tr>
         {% endfor %}
       </tbody>

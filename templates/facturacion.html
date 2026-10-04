@@ -23,13 +23,14 @@
           <th>Cliente</th>
           <th>Total</th>
           <th>Estado</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
         {% for factura in facturas %}
         <tr>
           <td>{{ factura.numero }}</td>
-          <td>{{ factura.cliente }}</td>
+          <td>{{ factura.cliente_nombre }}</td>
           <td>${{ "%.2f"|format(factura.total) }}</td>
           <td>
             {% if factura.estado == "Pagada" %}
@@ -38,6 +39,7 @@
               <span class="badge bg-warning text-dark">Pendiente</span>
             {% endif %}
           </td>
+          <td><form method="post" action="{{ url_for('eliminar_factura', id=factura.id) }}"><button class="btn btn-sm btn-danger">Eliminar</button></form></td>
         </tr>
         {% endfor %}
       </tbody>

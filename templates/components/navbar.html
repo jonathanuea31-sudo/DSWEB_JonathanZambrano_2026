@@ -11,6 +11,7 @@
     </button>
     <div class="collapse navbar-collapse" id="menu">
       <ul class="navbar-nav ms-auto">
+        {% if current_user.is_authenticated %}
         <li class="nav-item">
           <a class="nav-link {% if active == 'inicio' %}active{% endif %}" href="{{ url_for('index') }}">Inicio</a>
         </li>
@@ -26,6 +27,11 @@
         <li class="nav-item">
           <a class="nav-link {% if active == 'facturacion' %}active{% endif %}" href="{{ url_for('facturacion') }}">Facturación</a>
         </li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">Cerrar sesión</a></li>
+        {% else %}
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Iniciar sesión</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('registro') }}">Registrarse</a></li>
+        {% endif %}
       </ul>
     </div>
   </div>

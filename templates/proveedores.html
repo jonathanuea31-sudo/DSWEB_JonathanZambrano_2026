@@ -30,6 +30,8 @@
           {% else %}
             <span class="badge bg-danger">Calificación: {{ proveedor.calificacion }} / 5</span>
           {% endif %}
+          <div class="mt-2"><a class="btn btn-sm btn-warning" href="{{ url_for('editar_proveedor', id=proveedor.id) }}">Editar</a>
+          <form class="d-inline" method="post" action="{{ url_for('eliminar_proveedor', id=proveedor.id) }}"><button class="btn btn-sm btn-danger">Eliminar</button></form></div>
         </div>
       </div>
     </div>

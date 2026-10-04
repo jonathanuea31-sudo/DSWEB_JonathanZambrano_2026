@@ -1,65 +1,66 @@
-"""
-Módulo de conexión a la base de datos SQLite del proyecto.
-
-Se centraliza aquí la ruta de la base de datos, la creación de la conexión
-y la inicialización de las tablas, para mantener app.py más limpio y
-facilitar la futura migración hacia MySQL o PostgreSQL sin reorganizar
-el resto del proyecto.
-"""
-
 import os
-import sqlite3
+import psycopg2
+from psycopg2.extras import RealDictCursor
 
-# Carpeta 'data/' en la raíz del proyecto, y archivo ferreteria.db dentro de ella.
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_DIR = os.path.join(BASE_DIR, 'data')
-DB_PATH = os.path.join(DATA_DIR, 'ferreteria.db')
-
+DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:postgres123@localhost:5432/dsweb")
 
 def get_db_connection():
-    """Crea y devuelve una conexión a la base de datos SQLite.
-
-    row_factory = sqlite3.Row permite acceder a las columnas por nombre
-    (ej. fila['nombre']), lo cual además es compatible con la notación
-    de punto de Jinja2 (ej. {{ producto.nombre }}).
-    """
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    return conn
-
+    return psycopg2.connect(DATABASE_URL, cursor_factory=RealDictCursor)
 
 def init_db():
-    """Crea la carpeta data/ y la tabla de productos si todavía no existen."""
-    os.makedirs(DATA_DIR, exist_ok=True)
-
     conn = get_db_connection()
-    conn.execute('''
-        CREATE TABLE IF NOT EXISTS productos (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nombre TEXT NOT NULL,
-            categoria TEXT NOT NULL,
-            precio REAL NOT NULL,
-            stock INTEGER NOT NULL
-        )
-    ''')
+    cur = conn.cursor()
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS usuarios (
+        id SERIAL PRIMARY KEY,
+        usuario VARCHAR(80) UNIQUE NOT NULL,
+        password VARCHAR(255) NOT NULL
+    );
+    CREATE TABLE IF NOT EXISTS proveedores (
+        id SERIAL PRIMARY KEY,
+        nombre VARCHAR(100) NOT NULL,
+        contacto VARCHAR(80) NOT NULL,
+        ciudad VARCHAR(60) NOT NULL,
+        calificacion INTEGER NOT NULL CHECK (calificacion BETWEEN 1 AND 5)
+    );
+    CREATE TABLE IF NOT EXISTS clientes (
+        id SERIAL PRIMARY KEY,
+        nombre VARCHAR(100) NOT NULL,
+        email VARCHAR(120) UNIQUE NOT NULL,
+        telefono VARCHAR(20) NOT NULL,
+        activo BOOLEAN NOT NULL DEFAULT TRUE
+    );
+    CREATE TABLE IF NOT EXISTS productos (
+        id SERIAL PRIMARY KEY,
+        nombre VARCHAR(80) NOT NULL,
+        categoria VARCHAR(60) NOT NULL,
+        precio NUMERIC(10,2) NOT NULL CHECK (precio > 0),
+        stock INTEGER NOT NULL CHECK (stock >= 0),
+        proveedor_id INTEGER REFERENCES proveedores(id) ON DELETE SET NULL
+    );
+    CREATE TABLE IF NOT EXISTS facturas (
+        id SERIAL PRIMARY KEY,
+        numero VARCHAR(20) UNIQUE NOT NULL,
+        cliente_id INTEGER NOT NULL REFERENCES clientes(id) ON DELETE CASCADE,
+        total NUMERIC(10,2) NOT NULL CHECK (total > 0),
+        estado VARCHAR(20) NOT NULL
+    );
+    """)
+    cur.execute("SELECT COUNT(*) AS total FROM proveedores")
+    if cur.fetchone()["total"] == 0:
+        cur.executemany("INSERT INTO proveedores(nombre,contacto,ciudad,calificacion) VALUES(%s,%s,%s,%s)", [
+            ("Distribuidora Andina S.A.","Jorge Salazar","Guayaquil",5),
+            ("Importadora Continental","Diana Mora","Quito",3)])
+    cur.execute("SELECT COUNT(*) AS total FROM clientes")
+    if cur.fetchone()["total"] == 0:
+        cur.executemany("INSERT INTO clientes(nombre,email,telefono,activo) VALUES(%s,%s,%s,%s)", [
+            ("María Fernández","maria.fernandez@gmail.com","0991234567",True),
+            ("Carlos Zambrano","carlos.zambrano@gmail.com","0987654321",True)])
+    cur.execute("SELECT COUNT(*) AS total FROM productos")
+    if cur.fetchone()["total"] == 0:
+        cur.executemany("INSERT INTO productos(nombre,categoria,precio,stock) VALUES(%s,%s,%s,%s)", [
+            ("Laptop Empresarial","Tecnología",750,8),
+            ("Impresora Multifuncional","Tecnología",180.50,3),
+            ("Silla Ergonómica","Mobiliario",95,0)])
     conn.commit()
-
-    # Si la tabla está vacía (primera vez que se crea la base de datos),
-    # se insertan algunos productos de ejemplo para no arrancar vacío.
-    cantidad = conn.execute('SELECT COUNT(*) FROM productos').fetchone()[0]
-    if cantidad == 0:
-        productos_iniciales = [
-            ("Laptop Empresarial", "Tecnología", 750.00, 8),
-            ("Impresora Multifuncional", "Tecnología", 180.50, 3),
-            ("Silla Ergonómica", "Mobiliario", 95.00, 0),
-            ("Escritorio Ejecutivo", "Mobiliario", 210.00, 5),
-            ("Proyector HD", "Tecnología", 320.00, 0),
-            ("Archivador Metálico", "Mobiliario", 60.00, 12),
-        ]
-        conn.executemany(
-            'INSERT INTO productos (nombre, categoria, precio, stock) VALUES (?, ?, ?, ?)',
-            productos_iniciales
-        )
-        conn.commit()
-
-    conn.close()
+    cur.close(); conn.close()
